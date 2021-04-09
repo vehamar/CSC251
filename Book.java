@@ -14,6 +14,10 @@ public class Book implements Measurable {
 		title = titl;
 		pages = pag;
 	}
+	
+	public Book(int pag) {
+		this("defaultAuthor", "defaultTitle", pag);
+	}
 
 	public int getPages() {
 		return pages;
