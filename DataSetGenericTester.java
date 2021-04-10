@@ -24,7 +24,7 @@ public class DataSetGenericTester {
 	private Person person5 = new Person(40);
 	
 	@Test
-	public void testMergeSort_Rocks() {
+	public void testSort_Rocks() {
 		DataSetGeneric<Rocks> r = new DataSetGeneric<>();
 		r.add(r3);
 		r.add(r2);
@@ -37,11 +37,11 @@ public class DataSetGenericTester {
 		expectedRocks.add(r3);
 		expectedRocks.add(r4);
 		expectedRocks.add(r5);
-		assertEquals(expectedRocks, r.mergeSort());
+		assertEquals(expectedRocks, r.sort());
 	}
 	
 	@Test
-	public void testMergeSort_Book() {
+	public void testSort_Book() {
 		DataSetGeneric<Book> b = new DataSetGeneric<>();
 		b.add(b4);
 		b.add(b1);
@@ -54,11 +54,11 @@ public class DataSetGenericTester {
 		expectedBooks.add(b3);
 		expectedBooks.add(b4);
 		expectedBooks.add(b5);
-		assertEquals(expectedBooks, b.mergeSort());
+		assertEquals(expectedBooks, b.sort());
 	}
 	
 	@Test
-	public void testMergeSort_Person() {
+	public void testSort_Person() {
 		DataSetGeneric<Person> personList = new DataSetGeneric<>();
 		personList.add(person3);
 		personList.add(person2);
@@ -71,7 +71,7 @@ public class DataSetGenericTester {
 		expectedPerson.add(person3);
 		expectedPerson.add(person4);
 		expectedPerson.add(person5);
-		assertEquals(expectedPerson, personList.mergeSort());
+		assertEquals(expectedPerson, personList.sort());
 	}
 	
 	@Test
