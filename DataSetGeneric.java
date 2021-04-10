@@ -33,29 +33,31 @@ public class DataSetGeneric<E extends Measurable> extends ArrayList<E> {
 		return isEmpty() ? null : Collections.min(this, Comparator.comparing(E::getMeasure));
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<E> sort() {
-		Object[] data = toArray();
+		Measurable[] data = new Measurable[size()];
+		toArray(data);
 		mergeSort(data);
 		return (List<E>) Arrays.asList(data);
 	}
 	
-	private void mergeSort(Object[] data) {
+	private void mergeSort(Measurable[] data) {
 		if(data.length > 1) {
 			int halfLength = data.length / 2;
-			Object[] list1 = Arrays.copyOfRange(data, 0, halfLength);
+			Measurable[] list1 = Arrays.copyOfRange(data, 0, halfLength);
 			mergeSort(list1);
-			Object[] list2 = Arrays.copyOfRange(data, halfLength, data.length);
+			Measurable[] list2 = Arrays.copyOfRange(data, halfLength, data.length);
 			mergeSort(list2);
 			merge(list1, list2, data);
 		}
 	}
 	
-	private void merge(Object[] list1, Object[] list2, Object[] data) {
+	private void merge(Measurable[] list1, Measurable[] list2, Measurable[] data) {
 		int index1 = 0;
 		int index2 = 0;
 		int index3 = 0;
 		while(index1 < list1.length && index2 < list2.length) {
-			if(((E)list1[index1]).getMeasure() < ((E)list2[index2]).getMeasure())
+			if(list1[index1].getMeasure() < list2[index2].getMeasure())
 				data[index3++] = list1[index1++];
 			else
 				data[index3++] = list2[index2++];
